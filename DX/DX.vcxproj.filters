@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="00.MainApp">
+      <UniqueIdentifier>{ca9e3bfc-edb7-4709-8b1e-f78e2cce9d71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98.Define">
+      <UniqueIdentifier>{969df589-8d47-4126-ac6b-b584c97f45c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility">
+      <UniqueIdentifier>{04ce2d1b-6e31-497b-8f6e-c17afd9c748e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Default">
+      <UniqueIdentifier>{84a1ee50-6e13-4e2b-a2d0-d809c0f5bbee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Object">
+      <UniqueIdentifier>{454f7190-d80c-42d5-95ec-b52b87a43e14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\00.Base">
+      <UniqueIdentifier>{8e37c1cb-1a15-4be0-a447-6d8a2e54c4e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\02.Device">
+      <UniqueIdentifier>{1dd11597-23c0-453c-b554-533e72c3e5ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\03.Mouse">
+      <UniqueIdentifier>{67e8b7c7-1429-45c1-92b7-489e75efb18f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\04.Manager">
+      <UniqueIdentifier>{024d0ec8-c7ad-4700-a583-869ecc4aaf1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\04.Manager\01.Input">
+      <UniqueIdentifier>{865fe43f-bd72-4ced-a092-353d743c5ec6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\04.Manager\02.Time">
+      <UniqueIdentifier>{b2181d28-3573-4446-8073-dde672419a7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\04.Manager\03.Textrue">
+      <UniqueIdentifier>{e94ee53b-a32c-4280-8956-11fc33995c71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\05.GameObject">
+      <UniqueIdentifier>{1940382f-fbf1-43c8-bacb-512497003e78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\06.Camera">
+      <UniqueIdentifier>{0ccb33f1-ec39-4088-b1c3-d9a342891e53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\01.Management">
+      <UniqueIdentifier>{9d427fd7-5e98-4e60-854a-29c60e0a1659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\05.GameObject\01.Unit">
+      <UniqueIdentifier>{7c7c6f7c-93ca-489c-ae64-96495611efe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\05.GameObject\02.Map">
+      <UniqueIdentifier>{b9aa0c3b-4bf2-41a7-bc52-14b456ceab65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Utility\05.GameObject\03.UI">
+      <UniqueIdentifier>{03c3cba0-0b1d-43ca-8b3d-0834cbad9081}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h">
+      <Filter>99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="DX.h">
+      <Filter>99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="MainApp.h">
+      <Filter>00.MainApp</Filter>
+    </ClInclude>
+    <ClInclude Include="Include.h">
+      <Filter>98.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>98.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>98.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Inline.h">
+      <Filter>98.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>98.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
+      <Filter>98.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Extern.h">
+      <Filter>98.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>97.Utility\03.Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="Device.h">
+      <Filter>97.Utility\02.Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Bace.h">
+      <Filter>97.Utility\00.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>97.Utility\04.Manager\01.Input</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>97.Utility\04.Manager\02.Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>97.Utility\06.Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>97.Utility\05.GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Management.h">
+      <Filter>97.Utility\01.Management</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObject.h">
+      <Filter>97.Utility\05.GameObject\02.Map</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitObject.h">
+      <Filter>97.Utility\05.GameObject\01.Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="UIObject.h">
+      <Filter>97.Utility\05.GameObject\03.UI</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureMgr.h">
+      <Filter>97.Utility\04.Manager\03.Textrue</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>99.Default</Filter>
+    </ClCompile>
+    <ClCompile Include="DX.cpp" />
+    <ClCompile Include="MainApp.cpp">
+      <Filter>00.MainApp</Filter>
+    </ClCompile>
+    <ClCompile Include="Device.cpp">
+      <Filter>97.Utility\02.Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>97.Utility\04.Manager\01.Input</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>97.Utility\04.Manager\02.Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>97.Utility\06.Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>97.Utility\05.GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Management.cpp">
+      <Filter>97.Utility\01.Management</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObject.cpp">
+      <Filter>97.Utility\05.GameObject\02.Map</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitObject.cpp">
+      <Filter>97.Utility\05.GameObject\01.Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="UIObject.cpp">
+      <Filter>97.Utility\05.GameObject\03.UI</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureMgr.cpp">
+      <Filter>97.Utility\04.Manager\03.Textrue</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="DX.ico">
+      <Filter>99.Default</Filter>
+    </Image>
+    <Image Include="small.ico">
+      <Filter>99.Default</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DX.rc">
+      <Filter>99.Default</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
