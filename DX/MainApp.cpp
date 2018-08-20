@@ -46,7 +46,7 @@ void CMainApp::Init()
 	//매니지먼트 초기화
 	Management->Init();
 
-	TextureMgr->Add_Texture(L"Player", L"Textrue/test.png", TEX_SINGLE);
+	TextureMgr->Add_Texture(L"Player", L"Textrue/Test/Run5/", TEX_MULTI , 38 , D3DCOLOR_ARGB(255,0,0,0) );
 
 	CGameObject* pTest = new CTest(Device->GetDevice());
 	((CTest*)pTest)->Init();
