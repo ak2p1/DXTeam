@@ -38,7 +38,7 @@ typedef struct TagObjectInfo		//객체 정보
 	D3DXVECTOR3 vScale;				//크기
 	D3DXVECTOR3 vAngle;				//회전
 	D3DXVECTOR3 vPos;					//위치
-	D3DXMATRIX	matWorld;			//월드 행렬
+	D3DXMATRIX		matWorld;			//월드 행렬
 
 	TagObjectInfo(
 		D3DXVECTOR3 _vScale = D3DXVECTOR3(0,0,0),
@@ -56,23 +56,25 @@ typedef struct TagObjectInfo		//객체 정보
 
 typedef struct TagCamera
 {
-	D3DXVECTOR3 vPos;
-	D3DXVECTOR3 vTarget;
-	D3DXVECTOR3 vUp;
-	D3DXMATRIX matView;
-	D3DXMATRIX matProj;
+	D3DXVECTOR3	 vPos;
+	D3DXVECTOR3	 vTarget;
+	D3DXVECTOR3	 vUp;
+	D3DXMATRIX		 matView;
+	D3DXMATRIX		 matProj;
 
 }CAMERA;
 
 typedef struct TagTextureInfo
 {
-	LPDIRECT3DTEXTURE9 pTexture;
+	LPDIRECT3DTEXTURE9 pTexture; //텍스쳐
+	float fWidth;		//텍스쳐 실제 가로 크기
+	float fHeight;	//텍스쳐 실제 세로 크기
 
 }TEXINFO;
 
 typedef struct  TagImage
 {
-	TEXINFO* pTexture;				//이미지 배열형태로 저장하기위해 포인터변수 선언
+	TEXINFO* pTexInfo;				//이미지 배열형태로 저장하기위해 포인터변수 선언
 	DWORD dwMaxCnt;				//이미지 최대 장수
 
 }IMAGE;

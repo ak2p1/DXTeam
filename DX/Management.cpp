@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Management.h"
 #include "GameObject.h"
+#include "Test.h"
 
 CManagement::CManagement()
 {
@@ -34,9 +35,9 @@ void CManagement::Render()
 	//Y º“∆√ ∞ÌπŒ¡ﬂ
 	for (DWORD i = 0; i < OBJ_END; ++i)
 	{
-		for (DWORD j = 0; j < vecObjectUpdate[i].size(); ++j)
+		for (DWORD j = 0; j < vecRenderer[i].size(); ++j)
 		{
-			vecObjectUpdate[i][j]->Render();
+			vecRenderer[i][j]->Render();
 		}
 	}
 }

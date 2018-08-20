@@ -55,6 +55,9 @@
     <Filter Include="97.Utility\05.GameObject\03.UI">
       <UniqueIdentifier>{03c3cba0-0b1d-43ca-8b3d-0834cbad9081}</UniqueIdentifier>
     </Filter>
+    <Filter Include="97.Utility\07.Collision">
+      <UniqueIdentifier>{d206df25-5fd0-4de2-840c-d957f2d41884}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -127,6 +130,9 @@
     <ClInclude Include="TextureMgr.h">
       <Filter>97.Utility\04.Manager\03.Textrue</Filter>
     </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>01.Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -165,6 +171,9 @@
     </ClCompile>
     <ClCompile Include="TextureMgr.cpp">
       <Filter>97.Utility\04.Manager\03.Textrue</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>01.Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

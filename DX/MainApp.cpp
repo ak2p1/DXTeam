@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MainApp.h"
+#include "Test.h"
 
 
 
@@ -44,6 +45,12 @@ void CMainApp::Init()
 
 	//매니지먼트 초기화
 	Management->Init();
+
+	TextureMgr->Add_Texture(L"Player", L"Textrue/test.png", TEX_SINGLE);
+
+	CGameObject* pTest = new CTest(Device->GetDevice());
+	((CTest*)pTest)->Init();
+	Management->Add_Object(pTest, OBJ_PLAYER);
 
 }
 
