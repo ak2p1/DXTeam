@@ -9,7 +9,6 @@ private:
 	vector<CGameObject*> vecObjectUpdate[OBJ_END];
 	vector<CGameObject*> vecRenderer[OBJ_END];
 	
-	
 private:
 	CManagement();
 	~CManagement();
@@ -24,5 +23,9 @@ private:
 
 public:
 	void Add_Object(CGameObject* _pObject, eObjectType _eType);
+	vector<CGameObject*>  Get_ObjectType(eObjectType _eType)
+	{
+		return vecObjectUpdate[_eType];
+	}
 };
 
