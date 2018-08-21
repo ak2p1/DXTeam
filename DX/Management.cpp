@@ -12,9 +12,10 @@ CManagement::~CManagement()
 {
 	Release();
 }
-void CManagement::Init()
-{
 
+void CManagement::Init(LPDIRECT3DDEVICE9 _pDevice)
+{
+	m_pDevice = _pDevice;
 }
 
 int CManagement::Update(float _fTime /*= 0.0f*/)
@@ -33,6 +34,11 @@ void CManagement::Render()
 {
 	//ÀÓ½Ã ·»´õ¸µ
 	//Y ¼ÒÆÃ °í¹ÎÁß
+	m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+	m_pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
+	m_pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+	m_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+
 	for (DWORD i = 0; i < OBJ_END; ++i)
 	{
 		for (DWORD j = 0; j < vecRenderer[i].size(); ++j)
@@ -40,6 +46,8 @@ void CManagement::Render()
 			vecRenderer[i][j]->Render();
 		}
 	}
+
+	m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
 }
 
 void CManagement::Release()

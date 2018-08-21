@@ -5,15 +5,17 @@ class CManagement
 {
 	STATIC_SINGLETON(CManagement)
 private:
+	LPDIRECT3DDEVICE9 m_pDevice;
 	vector<CGameObject*> vecObjectUpdate[OBJ_END];
 	vector<CGameObject*> vecRenderer[OBJ_END];
-
+	
+	
 private:
 	CManagement();
 	~CManagement();
 
 public:
-	void Init();
+	void Init(LPDIRECT3DDEVICE9 _pDevice);
 	int Update(float _fTime = 0.0f);
 	void Render();
 
