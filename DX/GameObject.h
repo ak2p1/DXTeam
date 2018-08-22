@@ -15,7 +15,7 @@ public:
 
 protected:
 	void init(bool _isOriginSize = false , float _fWidth = 0.0f, float _fHeight = 0.0f);
-	void SetBuffer();
+	void SetBuffer(float _fWidth , float _fHeight);
 
 public:
 	virtual int Update(float _fTime = 0.0f) override = 0;

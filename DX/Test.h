@@ -5,7 +5,7 @@ class CTest :
 {
 private:
 	IMAGE * pImage;
-	INFO m_tInfo;
+	float m_fTime;
 public:
 	CTest(LPDIRECT3DDEVICE9 pDevice = NULL);
 	virtual ~CTest();

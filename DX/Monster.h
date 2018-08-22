@@ -10,11 +10,7 @@ private:
 	bool m_bAttakted;
 	float m_fAnimationTime;
 	float m_fAnimationLimitTime;
-
-
 	IMAGE * pImage;
-	INFO m_tInfo;
-	
 
 public:
 	CMonster(LPDIRECT3DDEVICE9 pDevice = NULL);

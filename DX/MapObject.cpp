@@ -8,15 +8,10 @@ CMapObject::CMapObject(LPDIRECT3DDEVICE9 pDevice)
 
 CMapObject::~CMapObject()
 {
+	Release();
 }
 
-
-
-int CMapObject::Update(float _fTime /*= 0.0f*/)
+void CMapObject::Release()
 {
-	return 0;
-}
 
-void CMapObject::Render()
-{
 }

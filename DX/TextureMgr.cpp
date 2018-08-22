@@ -56,12 +56,9 @@ void CTextureMgr::Add_Texture(
 
 		D3DSURFACE_DESC desc;
 		pImage->pTexInfo->pTexture->GetLevelDesc(0, &desc);
-
 		pImage->pTexInfo->fWidth = (float)desc.Width;
 		pImage->pTexInfo->fHeight = (float)desc.Height;
-
 		mapImage.insert(make_pair(_szFileKey , pImage) );
-
 	}
 	else //이미지 멀티 타입
 	{
@@ -106,12 +103,9 @@ void CTextureMgr::Add_Texture(
 			{
 				int a = 0;
 			}
-			
-			
 
 			D3DSURFACE_DESC desc;
 			pImage->pTexInfo[i].pTexture->GetLevelDesc(0, &desc);
-
 			pImage->pTexInfo[i].fWidth = (float)desc.Width;
 			pImage->pTexInfo[i].fHeight = (float)desc.Height;
 		}

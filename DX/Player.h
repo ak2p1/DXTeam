@@ -8,7 +8,6 @@ private:
 	IMAGE*	pCriticalImage;
 	IMAGE*	pRunImage;
 	IMAGE*	pDashImage;
-	INFO	m_tInfo;
 
 private:
 	int			nCritical;

@@ -44,14 +44,7 @@ int CMonster::Update(float _fTime)
 	m_tInfo.vScale.z = 1.0f;
 
 
-	D3DXMATRIX matScale, matRotX, matRotY, matRotZ, matPos;
-	D3DXMatrixScaling(&matScale, m_tInfo.vScale.x, m_tInfo.vScale.y, m_tInfo.vScale.z);
-	D3DXMatrixRotationX(&matRotX, m_tInfo.vAngle.x);
-	D3DXMatrixRotationY(&matRotY, m_tInfo.vAngle.y);
-	D3DXMatrixRotationZ(&matRotZ, m_tInfo.vAngle.z);
-	D3DXMatrixTranslation(&matPos, m_tInfo.vPos.x, m_tInfo.vPos.y, 0);
-
-	m_tInfo.matWorld = matScale * matRotX * matRotY * matRotZ * matPos;
+	CGameObject::Update();
 	return 0;
 
 }
@@ -79,7 +72,7 @@ void CMonster::Render()
 	static int nTemp = 0;
 	m_pDevice->SetTransform(D3DTS_WORLD, &m_tInfo.matWorld);
 	m_pDevice->SetTexture(0, pImage->pTexInfo[nTemp].pTexture);
-	CGameObject::SetBuffer();
+	CGameObject::SetBuffer(pImage->pTexInfo[nTemp].fWidth , pImage->pTexInfo[nTemp].fHeight);
 	//알파연산 끝났다.
 	m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
 

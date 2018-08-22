@@ -28,7 +28,8 @@ void CPlayer::Init()
 	pCriticalImage = TextureMgr->GetImage(L"PlayerCritical");
 	pRunImage = TextureMgr->GetImage(L"PlayerRun");
 	pDashImage = TextureMgr->GetImage(L"PlayerDash");
-	CGameObject::init(true, pRunImage->pTexInfo[0].fWidth, pRunImage->pTexInfo[0].fHeight);
+
+	CGameObject::init(false, pRunImage->pTexInfo[0].fWidth, pRunImage->pTexInfo[0].fHeight);
 
 	m_tInfo.vPos.x = 500.0f;
 	m_tInfo.vPos.y = 400.0f;
@@ -36,20 +37,14 @@ void CPlayer::Init()
 
 int CPlayer::Update(float _fTime)
 {
-	fTime += _fTime;
+	KeyInput();
 
+	fTime += _fTime;
 	m_tInfo.vScale.x = 1.0f;
 	m_tInfo.vScale.y = 1.0f;
 	m_tInfo.vScale.z = 1.0f;
 
-	D3DXMATRIX matScale, matRotX, matRotY, matRotZ, matPos;
-	D3DXMatrixScaling(&matScale, m_tInfo.vScale.x, m_tInfo.vScale.y, m_tInfo.vScale.z);
-	D3DXMatrixRotationX(&matRotX, m_tInfo.vAngle.x);
-	D3DXMatrixRotationY(&matRotY, m_tInfo.vAngle.y);
-	D3DXMatrixRotationZ(&matRotZ, m_tInfo.vAngle.z);
-	D3DXMatrixTranslation(&matPos, m_tInfo.vPos.x, m_tInfo.vPos.y, 0);
-
-	m_tInfo.matWorld = matScale * matRotX * matRotY * matRotZ * matPos;
+	CGameObject::Update();
 	return 0;
 }
 
@@ -57,20 +52,21 @@ void CPlayer::Render()
 {
 	m_pDevice->SetTransform(D3DTS_WORLD, &m_tInfo.matWorld);
 	GameSpeedControl();
-	KeyInput();
 
 	if (!isRun)
 	{
 		if (nCritical < 10 + nCriticalPer)
 		{
-			if (!isInit) CGameObject::init(true, pCriticalImage->pTexInfo[0].fWidth, pCriticalImage->pTexInfo[0].fHeight);
+			//if (!isInit) CGameObject::init(true, pCriticalImage->pTexInfo[0].fWidth, pCriticalImage->pTexInfo[0].fHeight);
 			m_pDevice->SetTexture(0, pCriticalImage->pTexInfo[nTemp].pTexture);
+			CGameObject::SetBuffer(pCriticalImage->pTexInfo[0].fWidth, pCriticalImage->pTexInfo[0].fHeight);
 		}
 		else
 		{
 			nCritical = 1500;
-			if (!isInit) CGameObject::init(true, pAttackImage->pTexInfo[0].fWidth, pAttackImage->pTexInfo[0].fHeight);
+		//	if (!isInit) CGameObject::init(true, pAttackImage->pTexInfo[0].fWidth, pAttackImage->pTexInfo[0].fHeight);
 			m_pDevice->SetTexture(0, pAttackImage->pTexInfo[nTemp].pTexture);
+			CGameObject::SetBuffer(pAttackImage->pTexInfo[0].fWidth, pAttackImage->pTexInfo[0].fHeight);
 		}
 
 		if (nClickCount > 0)
@@ -83,12 +79,13 @@ void CPlayer::Render()
 	{
 		if (nClickCount == 0)
 		{
-			if (!isInit) CGameObject::init(true, pRunImage->pTexInfo[0].fWidth, pRunImage->pTexInfo[0].fHeight);
+			//if (!isInit) CGameObject::init(true, pRunImage->pTexInfo[0].fWidth, pRunImage->pTexInfo[0].fHeight);
 			m_pDevice->SetTexture(0, pRunImage->pTexInfo[nTemp].pTexture);
+			CGameObject::SetBuffer(pRunImage->pTexInfo[0].fWidth, pRunImage->pTexInfo[0].fHeight);
 		}
+		else Dash();
 	}
-	CGameObject::SetBuffer();
-	cout << nClickCount << endl;
+	//CGameObject::SetBuffer();
 
 }
 
@@ -127,7 +124,7 @@ void CPlayer::EndImage()
 
 void CPlayer::KeyInput()
 {
-	if (InputMgr->KeyDown(VK_UP)) nGameSpeed++;
+	if (InputMgr->KeyDown(VK_UP)) nGameSpeed+=5;
 	if (InputMgr->KeyDown(VK_DOWN)) nGameSpeed--;
 	if (InputMgr->KeyDown('Q')) nCriticalPer += 5;
 	if (InputMgr->KeyDown(VK_SPACE)) nClickCount++;
@@ -150,8 +147,14 @@ void CPlayer::Dash()
 {
 	if (!isRun) return;
 
-	if (!isInit) CGameObject::init(true, pDashImage->pTexInfo[0].fWidth, pDashImage->pTexInfo[0].fHeight);
-	m_pDevice->SetTexture(0, pDashImage->pTexInfo[nTemp].pTexture);
+	if (!isInit)	//어떤 모션이든 끝날때 
+	{
+		//CGameObject::init(true, pDashImage->pTexInfo[0].fWidth, pDashImage->pTexInfo[0].fHeight);
+		m_pDevice->SetTexture(0, pDashImage->pTexInfo[nTemp].pTexture);
+		CGameObject::SetBuffer( pDashImage->pTexInfo[nTemp].fWidth , pDashImage->pTexInfo[nTemp].fHeight);
+	}
+		
+	
 	if (isDash)
 	{
 		if (nTemp < 5)
@@ -176,7 +179,7 @@ void CPlayer::GameSpeedControl()
 
 			if (nClickCount > 0)
 			{
-				Dash();
+				//Dash();
 
 				if (nTemp > 62)
 				{

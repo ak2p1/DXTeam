@@ -55,8 +55,17 @@
     <Filter Include="97.Utility\05.GameObject\03.UI">
       <UniqueIdentifier>{03c3cba0-0b1d-43ca-8b3d-0834cbad9081}</UniqueIdentifier>
     </Filter>
-    <Filter Include="97.Utility\07.Collision">
-      <UniqueIdentifier>{d206df25-5fd0-4de2-840c-d957f2d41884}</UniqueIdentifier>
+    <Filter Include="01.Object\00.Player">
+      <UniqueIdentifier>{3c9c7d65-9bbc-46d5-9779-62ea5d64eb90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Object\01.Monter">
+      <UniqueIdentifier>{baa34db1-eda9-4e58-8080-ba4810fad530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Object\01.Monter\01.MonsterObj">
+      <UniqueIdentifier>{d2bc5800-6310-4ea4-84d6-63d7452cbcb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Object\02.Tile">
+      <UniqueIdentifier>{ed204be7-76b2-40e0-85e3-ebe69e0b8336}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +142,18 @@
     <ClInclude Include="Test.h">
       <Filter>01.Object</Filter>
     </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>01.Object\01.Monter\01.MonsterObj</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterMgr.h">
+      <Filter>01.Object\01.Monter</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>01.Object\00.Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>01.Object\02.Tile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -175,6 +196,18 @@
     <ClCompile Include="Test.cpp">
       <Filter>01.Object</Filter>
     </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>01.Object\01.Monter\01.MonsterObj</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterMgr.cpp">
+      <Filter>01.Object\01.Monter</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>01.Object\00.Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>01.Object\02.Tile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="DX.ico">
@@ -188,5 +221,9 @@
     <ResourceCompile Include="DX.rc">
       <Filter>99.Default</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="TestShader.hlsl" />
+    <FxCompile Include="TestShader2.hlsl" />
   </ItemGroup>
 </Project>

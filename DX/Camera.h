@@ -8,13 +8,17 @@ private:
 	D3DXMATRIX matMainView;
 	D3DXMATRIX matProj;
 
+	D3DXVECTOR3 m_vPos;
+
+	D3DXVECTOR3 m_vBeforePos;
+
 public:
 	CCamera();
 	~CCamera();
 
 public:
 	void Init(LPDIRECT3DDEVICE9 _pDevice);
-	int Update();
+	int Update(float _fTime = 0.0f);
 
 private:
 	void Release();

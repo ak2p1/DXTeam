@@ -37,7 +37,7 @@ void CManagement::Render()
 	m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
 	m_pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 	m_pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-	m_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+ 	m_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 
 	for (DWORD i = 0; i < OBJ_END; ++i)
 	{
@@ -73,5 +73,4 @@ void CManagement::Add_Object(CGameObject* _pObject, eObjectType _eType)
 		vecObjectUpdate[_eType].push_back(_pObject);
 		vecRenderer[_eType].push_back(_pObject);
 	}
-
 }

@@ -8,8 +8,10 @@ public:
 	~CMapObject();
 
 public:
-	virtual int Update(float _fTime = 0.0f) override;
-	virtual void Render() override;
+	virtual int Update(float _fTime = 0.0f) override = 0;
+	virtual void Render() override = 0;
 
+private:
+	void Release();
 };
 
