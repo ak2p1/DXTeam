@@ -7,6 +7,7 @@ class CGameObject :
 protected:
 	LPDIRECT3DDEVICE9 m_pDevice;
 	LPDIRECT3DVERTEXBUFFER9 VertexBuffer;
+	INFO							m_tInfo;			//°´Ã¼ Á¤º¸
 
 public:
 	CGameObject();
@@ -20,7 +21,17 @@ public:
 	virtual int Update(float _fTime = 0.0f) override = 0;
 	virtual void Render() override = 0;
 
+public:
+	INFO GetInfo()
+	{
+		return m_tInfo;
+	}
+	D3DXVECTOR3 GetPos()
+	{
+		return m_tInfo.vPos;
+	}
 private:
+
 	void Release();
 
 };

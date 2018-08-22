@@ -5,6 +5,7 @@ CGameObject::CGameObject()
 	:m_pDevice(NULL)
 	, VertexBuffer(NULL)
 {
+	ZeroMemory(&m_tInfo, sizeof(m_tInfo));
 	
 }
 
@@ -87,6 +88,19 @@ void CGameObject::SetBuffer()
 {
 	m_pDevice->SetStreamSource(0, VertexBuffer, 0, sizeof(VERTEX_TEX));
 	m_pDevice->DrawPrimitive(D3DPT_TRIANGLELIST, 0, 2);
+}
+
+int CGameObject::Update(float _fTime /*= 0.0f*/)
+{
+	D3DXMATRIX matScale, matRotX, matRotY, matRotZ, matPos;
+	D3DXMatrixScaling(&matScale, m_tInfo.vScale.x, m_tInfo.vScale.y, m_tInfo.vScale.z);
+	D3DXMatrixRotationX(&matRotX, m_tInfo.vAngle.x);
+	D3DXMatrixRotationY(&matRotY, m_tInfo.vAngle.y);
+	D3DXMatrixRotationZ(&matRotZ, m_tInfo.vAngle.z);
+	D3DXMatrixTranslation(&matPos, m_tInfo.vPos.x , m_tInfo.vPos.y , 0);
+	m_tInfo.matWorld = matScale * matRotX * matRotY * matRotZ * matPos;
+
+	return 0;
 }
 
 void CGameObject::Release()
