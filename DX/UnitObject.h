@@ -3,6 +3,20 @@
 class CUnitObject :
 	public CGameObject
 {
+protected:
+	enum eCharacterState
+	{
+		Attack,
+		Critical,
+		Move,
+		Idle,
+		IsHitted
+	};
+
+	eCharacterState Player;
+	eCharacterState Monster;
+
+	void GetPlayerState(int _case = 0);
 public:
 	CUnitObject(LPDIRECT3DDEVICE9 pDevice = NULL);
 	virtual ~CUnitObject();

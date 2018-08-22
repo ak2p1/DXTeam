@@ -19,3 +19,24 @@ void CUnitObject::Render()
 {
 
 }
+
+void CUnitObject::GetPlayerState(int _case)
+{
+	switch (_case)
+	{
+	case 0:
+		Player = Idle;
+		break;
+	case 1:
+		Player = Attack;
+		break;
+	case 2:
+		Player = Critical;
+		break;
+	case 3:
+		Player = Move;
+		break;
+	default:
+		break;
+	}
+}
