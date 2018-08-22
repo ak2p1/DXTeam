@@ -1,13 +1,14 @@
 #pragma once
-#include "GameObject.h"
+#include "UnitObject.h"
 class CPlayer :
-	public CGameObject
+	public CUnitObject
 {
 private:
 	IMAGE*	pAttackImage;
 	IMAGE*	pCriticalImage;
 	IMAGE*	pRunImage;
 	IMAGE*	pDashImage;
+	IMAGE*	pDashEffectImage;
 
 private:
 	int			nCritical;
@@ -16,6 +17,7 @@ private:
 	bool		isRun;
 	bool		isInit;
 	bool		isDash;
+	bool		isAttacked;
 
 private://Speed
 	int			nATKSpeed;
@@ -27,9 +29,12 @@ private://Speed
 private://Click Count
 	int			nClickCount;
 
-private:
-	//LPD3DXEFFECT	shader;
-	//D3DXCOLOR		color;
+private://Shader
+	LPD3DXEFFECT	shader;
+	UINT			passNum;
+	D3DXCOLOR		color;
+
+	void CreateShader(wstring fileName, LPD3DXEFFECT * shader);
 public:
 	CPlayer(LPDIRECT3DDEVICE9 pDevice = NULL);
 	virtual ~CPlayer();
@@ -46,5 +51,7 @@ public:
 	bool IsBattle(bool _isBattle);
 	void PlayerMove();
 	void Dash();
+
+	bool isAttack();
 };
 
