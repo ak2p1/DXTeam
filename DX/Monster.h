@@ -5,12 +5,22 @@ class CMonster :
 {
 private:
 
-	int m_nMonsterNum;
+	
 	int m_nHP;
 	bool m_bAttakted;
 	float m_fAnimationTime;
 	float m_fAnimationLimitTime;
 	IMAGE * pImage;
+
+	LPD3DXEFFECT shader;
+	D3DXCOLOR color;
+
+	float colorValue;
+	UINT passNum;
+
+	bool m_bLife;
+
+
 
 public:
 	CMonster(LPDIRECT3DDEVICE9 pDevice = NULL);
