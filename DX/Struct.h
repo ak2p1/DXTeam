@@ -39,14 +39,17 @@ typedef struct TagObjectInfo		//객체 정보
 	D3DXVECTOR3 vAngle;				//회전
 	D3DXVECTOR3 vPos;					//위치
 	D3DXMATRIX		matWorld;			//월드 행렬
+	int			nMonNum;
 
 	TagObjectInfo(
 		D3DXVECTOR3 _vScale = D3DXVECTOR3(0,0,0),
 		D3DXVECTOR3 _vAngle = D3DXVECTOR3(0, 0, 0),
-		D3DXVECTOR3 _vPos = D3DXVECTOR3(0, 0, 0))
+		D3DXVECTOR3 _vPos = D3DXVECTOR3(0, 0, 0),
+		int         _nMonNum = 0)
 		:vScale(_vScale)
 		, vAngle(_vAngle)
-		, vPos(vPos)
+		, vPos(_vPos)
+		, nMonNum(_nMonNum)
 	{
 		D3DXMatrixIdentity(&matWorld);
 	}
