@@ -1,7 +1,7 @@
 #pragma once
-#include "GameObject.h"
+#include "UnitObject.h"
 class CMonsterMgr :
-	public CGameObject
+	public CUnitObject
 {
 
 private:
@@ -9,7 +9,8 @@ private:
 	bool m_bLife;
 	int m_nMonsterCount;
 
-
+	LPD3DXEFFECT shader;
+	D3DXCOLOR color;
 	//int m_nMonsterNum;
 public:
 	CMonsterMgr(LPDIRECT3DDEVICE9 pDevice = NULL);
