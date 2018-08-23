@@ -47,16 +47,18 @@ void CMainApp::Init()
 	//매니지먼트 초기화
 	Management->Init(m_pDevice);
 
-	TextureMgr->Add_Texture(L"PlayerAttack", L"Textrue/PlayerMotion/Attack1/", TEX_MULTI, 65, D3DCOLOR_ARGB(255, 255, 255, 255));
-	TextureMgr->Add_Texture(L"PlayerCritical", L"Textrue/PlayerMotion/Attack3/", TEX_MULTI, 64, D3DCOLOR_ARGB(255, 255, 255, 255));
-	TextureMgr->Add_Texture(L"PlayerDash", L"Textrue/PlayerMotion/Attack2/", TEX_MULTI, 64, D3DCOLOR_ARGB(255, 255, 255, 255));
-	TextureMgr->Add_Texture(L"PlayerRun", L"Textrue/PlayerMotion/Run/", TEX_MULTI, 37, D3DCOLOR_ARGB(255, 255, 255, 255));
-	TextureMgr->Add_Texture(L"Tile", L"Textrue/Tile/TestTile.png", TEX_SINGLE );
-	TextureMgr->Add_Texture(L"Monster1", L"Textrue/image/Enemy/Monster1/IDLE/", TEX_MULTI, 12, 0);
-	TextureMgr->Add_Texture(L"PlayerAttack", L"Textrue/PlayerMotion/Attack1/", TEX_MULTI, 65, D3DCOLOR_ARGB(255, 255, 255, 255));
-	TextureMgr->Add_Texture(L"PlayerCritical", L"Textrue/PlayerMotion/Attack3/", TEX_MULTI, 64, D3DCOLOR_ARGB(255, 255, 255, 255));
-	TextureMgr->Add_Texture(L"PlayerDash", L"Textrue/PlayerMotion/Attack2/", TEX_MULTI, 64, D3DCOLOR_ARGB(255, 255, 255, 255));
-	TextureMgr->Add_Texture(L"PlayerRun", L"Textrue/PlayerMotion/Run/", TEX_MULTI, 37, D3DCOLOR_ARGB(255, 255, 255, 255));
+	TextureMgr->Add_Texture(L"PlayerDashEffect", L"Textrue/Effect/Dash/", TEX_MULTI, 27, D3DCOLOR_ARGB(255, 255, 255, 255));
+
+	TextureMgr->Add_Texture(L"PlayerAttack", L"Textrue/PlayerMotion/Attack1/", TEX_MULTI, 65);
+	TextureMgr->Add_Texture(L"PlayerCritical", L"Textrue/PlayerMotion/Attack3/", TEX_MULTI, 64 );
+	TextureMgr->Add_Texture(L"PlayerRun", L"Textrue/PlayerMotion/Run/", TEX_MULTI, 37 );
+	TextureMgr->Add_Texture(L"Monster1", L"Textrue/image/Enemy/Monster3/IDLE/", TEX_MULTI, 28, 0);
+	TextureMgr->Add_Texture(L"PlayerAttack", L"Textrue/PlayerMotion/Attack1/", TEX_MULTI, 65 );
+	TextureMgr->Add_Texture(L"PlayerCritical", L"Textrue/PlayerMotion/Attack3/", TEX_MULTI, 64);
+	TextureMgr->Add_Texture(L"PlayerRun", L"Textrue/PlayerMotion/Run/", TEX_MULTI, 37);
+
+	TextureMgr->Add_Texture(L"Tile", L"Textrue/Tile/TestTile.png", TEX_SINGLE);
+	TextureMgr->Add_Texture(L"Sky", L"Textrue/Sky.jpg", TEX_SINGLE);
 
 
 	CGameObject* pTest = new CTile(Device->GetDevice());
@@ -71,10 +73,6 @@ void CMainApp::Init()
 	CGameObject* pMonster1 = new CMonster(Device->GetDevice());
 	((CMonster*)pMonster1)->Init();
 	Management->Add_Object(pMonster1, OBJ_MONSTER);
-
-
-
-
 
 	// 	pTest = new CTest(Device->GetDevice());
 	// 	((CTest*)pTest)->Init();

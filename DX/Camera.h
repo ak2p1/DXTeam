@@ -20,6 +20,12 @@ public:
 	void Init(LPDIRECT3DDEVICE9 _pDevice);
 	int Update(float _fTime = 0.0f);
 
+public:
+	D3DXVECTOR3 GetPos()
+	{
+		return m_vBeforePos;
+	}
+
 private:
 	void Release();
 };

@@ -24,15 +24,32 @@ void CDevice::Init()
 	//Device 객체의 성격을 결정하는데 이용
 	D3DPRESENT_PARAMETERS param;
 	ZeroMemory(&param, sizeof(param));
-	param.Windowed = TRUE;	//TRUE : 창모드
+	//TRUE : 창모드
+	param.Windowed = TRUE;	
+
+	//전체화면 할 경우
+	//D3DDISPLAYMODE mode;
+	//d3d->GetAdapterDisplayMode(D3DADAPTER_DEFAULT, &mode);
+	//param.BackBufferWidth = mode.Width;
+	//param.BackBufferHeight = mode.Height;
+	//param.BackBufferFormat = mode.Format;
+
+
+
 
 	param.SwapEffect = D3DSWAPEFFECT_DISCARD;	//플리핑 체인의 버퍼가 교환되는 방법을 지정하는
 																										  //D3DWSWAPEFFECT열거형 맴버, 
 																										  //DISCARD를 지정하는 것이 가장 효과적이다
 	
 	param.AutoDepthStencilFormat = D3DFMT_D16; 	//깊이,스텐실 버퍼의 포멧
-
 	param.EnableAutoDepthStencil = TRUE;
+
+	//VSync 끄기 (수직 동기화)
+	param.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+
+	//VSync 켜기
+	//param.PresentationInterval = D3DPRESENT_INTERVAL_DEFAULT;
+
 
 	d3d->CreateDevice(
 		D3DADAPTER_DEFAULT,

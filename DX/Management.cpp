@@ -37,52 +37,52 @@ int CManagement::Update(float _fTime /*= 0.0f*/)
 		}
 	}
 
-	if (m_bMonsterCreate)
-	{
-		SAFE_DELETE(vecObjectUpdate[OBJ_MONSTER][0]);
-		vecObjectUpdate[OBJ_MONSTER][0] = vecObjectUpdate[OBJ_MONSTER][1];
-		vecRenderer[OBJ_MONSTER][0] = vecObjectUpdate[OBJ_MONSTER][1];
-		CGameObject* pMonster = NULL;
-		int nTemp = (rand() % 3); // 0, 1,2,3 
-		switch (nTemp)
-		{
-		case 0:
-		{
-			pMonster = new CMonster(Device->GetDevice());
-			((CMonster*)pMonster)->Init();
-			break;
-		}
-		case 1:
-		{
-			
-				pMonster = new CMonster(Device->GetDevice());
-				((CMonster*)pMonster)->Init();
-				break;
-			
-		}
-		case 2:
-		{
-			pMonster = new CMonster(Device->GetDevice());
-			((CMonster*)pMonster)->Init();
-			break;
-		}
-		case 3:
-		{
-			pMonster = new CMonster(Device->GetDevice());
-			((CMonster*)pMonster)->Init();
-			break;
-		}
-		default:
-			break;
-		}
-		
-		if (pMonster != NULL)
-		{
-			vecObjectUpdate[OBJ_MONSTER][1] = pMonster;
-			vecRenderer[OBJ_MONSTER][1] = pMonster;
-			return 0;
-		}
-	}
+	//if (m_bMonsterCreate)
+	//{
+	//	SAFE_DELETE(vecObjectUpdate[OBJ_MONSTER][0]);
+	//	vecObjectUpdate[OBJ_MONSTER][0] = vecObjectUpdate[OBJ_MONSTER][1];
+	//	vecRenderer[OBJ_MONSTER][0] = vecObjectUpdate[OBJ_MONSTER][1];
+	//	CGameObject* pMonster = NULL;
+	//	int nTemp = (rand() % 3); // 0, 1,2,3 
+	//	switch (nTemp)
+	//	{
+	//	case 0:
+	//	{
+	//		pMonster = new CMonster(Device->GetDevice());
+	//		((CMonster*)pMonster)->Init();
+	//		break;
+	//	}
+	//	case 1:
+	//	{
+	//		
+	//			pMonster = new CMonster(Device->GetDevice());
+	//			((CMonster*)pMonster)->Init();
+	//			break;
+	//		
+	//	}
+	//	case 2:
+	//	{
+	//		pMonster = new CMonster(Device->GetDevice());
+	//		((CMonster*)pMonster)->Init();
+	//		break;
+	//	}
+	//	case 3:
+	//	{
+	//		pMonster = new CMonster(Device->GetDevice());
+	//		((CMonster*)pMonster)->Init();
+	//		break;
+	//	}
+	//	default:
+	//		break;
+	//	}
+	//	
+	//	if (pMonster != NULL)
+	//	{
+	//		vecObjectUpdate[OBJ_MONSTER][1] = pMonster;
+	//		vecRenderer[OBJ_MONSTER][1] = pMonster;
+	//		return 0;
+	//	}
+	//}
 	return 0;
 }
 

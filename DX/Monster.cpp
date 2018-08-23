@@ -15,7 +15,7 @@ CMonster::CMonster(LPDIRECT3DDEVICE9 pDevice):
 		L"AlphaShader.hlsl", NULL, NULL,
 		D3DXSHADER_DEBUG, NULL, &shader, NULL);
 
-	passNum = 1;
+	passNum = 4;
 
 }
 
@@ -42,6 +42,9 @@ void CMonster::Init()
 	m_tInfo.vPos.x = vPlayerPos.x + 250;
 	m_tInfo.vPos.y = vPlayerPos.y - 150;
 
+	m_tInfo.vScale.x = 1.5f;
+	m_tInfo.vScale.y = 1.25f;
+	m_tInfo.vScale.z = 1.0f;
 
 }
 
@@ -49,21 +52,18 @@ int CMonster::Update(float _fTime)
 {
 	m_fAnimationTime += _fTime;
 
-	m_tInfo.vScale.x = 1.0f;
-	m_tInfo.vScale.y = 1.0f;
-	m_tInfo.vScale.z = 1.0f;
 
 	CGameObject* pPlayer = Management->Get_ObjectType(OBJ_PLAYER)[0];
 
-	if (((CPlayer*)pPlayer)->isAttack())
-	{
-		m_nHP -= 10;
-	}
+	//if (((CPlayer*)pPlayer)->isAttack())
+	//{
+	//	m_nHP -= 10;
+	//}
 
-	if (m_nHP <= 0)
-	{
-		return 1;
-	}
+	//if (m_nHP <= 0)
+	//{
+	//	return 1;
+	//}
 
 	CGameObject::Update();
 	
@@ -76,31 +76,25 @@ int CMonster::Update(float _fTime)
 
 void CMonster::Render()
 {
+	shader->Begin(NULL, NULL);
+	shader->BeginPass(passNum);
 
-	//if (m_bLife == true)
-	
-		shader->Begin(NULL, NULL);
-		shader->BeginPass(passNum);
+	static int nTemp = 0;
+	m_pDevice->SetTransform(D3DTS_WORLD, &m_tInfo.matWorld);
+	m_pDevice->SetTexture(0, pImage->pTexInfo[nTemp].pTexture);
+	CGameObject::SetBuffer(pImage->pTexInfo[nTemp].fWidth, pImage->pTexInfo[nTemp].fHeight);
 
-		static int nTemp = 0;
-		m_pDevice->SetTransform(D3DTS_WORLD, &m_tInfo.matWorld);
-		m_pDevice->SetTexture(0, pImage->pTexInfo[nTemp].pTexture);
-		CGameObject::SetBuffer(pImage->pTexInfo[nTemp].fWidth, pImage->pTexInfo[nTemp].fHeight);
+	if (m_fAnimationTime >= m_fAnimationLimitTime)
+	{
+		++nTemp;
+		m_fAnimationTime = 0.f;
+	}
+	if (nTemp > 27)
+		nTemp = 0;
 
+	shader->EndPass();
+	shader->End();
 
-
-
-
-		if (m_fAnimationTime >= m_fAnimationLimitTime)
-		{
-			++nTemp;
-			m_fAnimationTime = 0.f;
-		}
-		if (nTemp > 27)
-			nTemp = 0;
-
-		shader->EndPass();
-		shader->End();
 	
 }
 

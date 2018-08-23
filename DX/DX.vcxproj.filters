@@ -223,7 +223,11 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="TestShader.hlsl" />
-    <FxCompile Include="TestShader2.hlsl" />
+    <FxCompile Include="AlphaShader.hlsl">
+      <Filter>01.Object\00.Player</Filter>
+    </FxCompile>
+    <FxCompile Include="AlphaShaderMonster.hlsl">
+      <Filter>01.Object\01.Monter</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

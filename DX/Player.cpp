@@ -41,18 +41,28 @@ void CPlayer::Init()
 	pAttackImage = TextureMgr->GetImage(L"PlayerAttack");
 	pCriticalImage = TextureMgr->GetImage(L"PlayerCritical");
 	pRunImage = TextureMgr->GetImage(L"PlayerRun");
-	pDashImage = TextureMgr->GetImage(L"PlayerDash");
+	//pDashImage = TextureMgr->GetImage(L"PlayerDash");
 	pDashEffectImage = TextureMgr->GetImage(L"PlayerDashEffect");
 
 	CGameObject::init(false, pRunImage->pTexInfo[0].fWidth, pRunImage->pTexInfo[0].fHeight);
 
-	m_tInfo.vPos.x = 500.0f;
+	m_tInfo.vPos.x = 400.0f;
 	m_tInfo.vPos.y = 400.0f;
 }
 
 int CPlayer::Update(float _fTime)
 {
 	KeyInput();
+
+	D3DXVECTOR3 vDir = { 0.56f,-0.44f,0.0f };
+	if (InputMgr->keyPress(VK_NUMPAD8))
+	{
+		m_tInfo.vPos += vDir * 300 * _fTime;
+	}
+	if (InputMgr->keyPress(VK_NUMPAD5))
+	{
+		m_tInfo.vPos -= vDir * 300 * _fTime;
+	}
 
 	D3DXVECTOR3 vEnermyPos = Management->Get_ObjectType(OBJ_MONSTER)[0]->GetPos();
 	if (m_tInfo.vPos.x >= vEnermyPos.x - 50)
@@ -161,8 +171,15 @@ void CPlayer::EndImage()
 
 void CPlayer::KeyInput()
 {
+	if (InputMgr->KeyDown(VK_UP)) nGameSpeed+=2;
+	if (InputMgr->KeyDown(VK_DOWN)) nGameSpeed-+2;
+
+	if (InputMgr->KeyDown(VK_UP)) nGameSpeed+=5;
+	if (InputMgr->KeyDown(VK_DOWN)) nGameSpeed--;
+
 	if (InputMgr->KeyDown(VK_UP)) nGameSpeed+=3;
 	if (InputMgr->KeyDown(VK_DOWN)) nGameSpeed-=3;
+
 	if (InputMgr->KeyDown('Q')) nCriticalPer += 5;
 	if (InputMgr->KeyDown(VK_SPACE)) nClickCount++;
 }
@@ -176,6 +193,12 @@ bool CPlayer::IsBattle(bool _isBattle)
 
 void CPlayer::PlayerMove()
 {
+//	//m_tInfo.vPos.x += 1;
+//	//m_tInfo.vPos.y -= 1;
+
+//	m_tInfo.vPos.x += 1;
+//	m_tInfo.vPos.y -= 1;
+
 	m_tInfo.vPos.x += 1.4;
 	m_tInfo.vPos.y -= 1;
 }
@@ -187,8 +210,8 @@ void CPlayer::Dash()
 
 	if (!isInit)	//모션 한가지가 뭐든지간에 끝난 후 isInit을 들어옴
 	{
-		m_pDevice->SetTexture(0, pDashImage->pTexInfo[nTemp].pTexture);
-		CGameObject::SetBuffer( pDashImage->pTexInfo[nTemp].fWidth , pDashImage->pTexInfo[nTemp].fHeight);
+		//m_pDevice->SetTexture(0, pDashImage->pTexInfo[nTemp].pTexture);
+		//CGameObject::SetBuffer( pDashImage->pTexInfo[nTemp].fWidth , pDashImage->pTexInfo[nTemp].fHeight);
 
 		
 		m_pDevice->SetTexture(0, pDashEffectImage->pTexInfo[i].pTexture);

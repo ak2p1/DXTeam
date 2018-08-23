@@ -13,6 +13,14 @@ private:
 	LARGE_INTEGER m_CpuTick;
 	float m_fTime;
 
+
+	//INT64 ticksPerSecond;
+	//INT64 currentTime;
+	//INT64 lastTime;
+	//INT64 lastFPSUpdate;
+	//INT64 fpsUpdateInterval;
+
+
 private:
 	CTimeManager();
 	~CTimeManager();

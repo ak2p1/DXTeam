@@ -26,7 +26,7 @@ void CTest::Init()
 int CTest::Update(float _fTime /*= 0.0f*/)
 {
 	m_fTime = _fTime;
-	D3DXVECTOR3 vDir = { 0.6f,-0.4f,0.0f };
+	D3DXVECTOR3 vDir = { 0.5f,-0.5f,0.0f };
 	if (InputMgr->keyPress(VK_UP))
 	{
 		m_tInfo.vPos += vDir * 300 * _fTime;

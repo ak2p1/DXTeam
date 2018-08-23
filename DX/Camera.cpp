@@ -50,7 +50,7 @@ int CCamera::Update(float _fTime /*= 0.0f*/)
 	float fSize = D3DXVec3Length(&vDir);
 	D3DXVec3Normalize(&vDir, &vDir);
 	if (fSize > 2.f)
-		m_vBeforePos += vDir * (fSize * 1.f) * _fTime;
+		m_vBeforePos += vDir * (fSize * 1.8f) * _fTime;
 	D3DXMatrixTranslation(&matPos, -m_vBeforePos.x, -m_vBeforePos.y,0);
 	matMainView *= matPos;
 	m_pDevice->SetTransform(D3DTS_VIEW, &matMainView);

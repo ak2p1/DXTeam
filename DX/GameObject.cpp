@@ -54,8 +54,8 @@ void CGameObject::init(
 	}
 	else
 	{
-		D3DXVECTOR2 vMin = D3DXVECTOR2( -100.0f,  -100.0f);
-		D3DXVECTOR2 vMax = D3DXVECTOR2( 100.0f,  100.0f);
+		D3DXVECTOR2 vMin = D3DXVECTOR2(-(_fWidth * 0.5f), -(_fHeight * 0.5f));
+		D3DXVECTOR2 vMax = D3DXVECTOR2(_fWidth * 0.5f, _fHeight * 0.5f);
 
 		Vertex = new VERTEX_TEX[6];
 		Vertex[0].vPos = D3DXVECTOR3(vMin.x, vMin.y, 1.0f);

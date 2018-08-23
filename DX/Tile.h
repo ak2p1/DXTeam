@@ -5,9 +5,9 @@ class CTile :
 {
 private:
 	IMAGE * pImage;
+	IMAGE * pSkyImage;
 
-	//D3DXCOLOR color;
-	//LPD3DXEFFECT shader;
+	vector<D3DXVECTOR3> vecPos;
 public:
 	CTile(LPDIRECT3DDEVICE9 pDevice = NULL);
 	virtual ~CTile();
