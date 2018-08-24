@@ -5,7 +5,9 @@ class CPlayer :
 {
 private:
 	IMAGE*	pAttackImage;
+	IMAGE*	pAttackEffectImage;
 	IMAGE*	pCriticalImage;
+	IMAGE*	pCriticalEffectImage;
 	IMAGE*	pRunImage;
 	IMAGE*	pDashImage;
 	IMAGE*	pDashEffectImage;
@@ -17,11 +19,16 @@ private:
 	bool		isRun;
 	bool		isInit;
 	bool		isDash;
+	bool		isDashEffect;
 	bool		isAttacked;
+	bool		isAttackEffect;
+	bool		isCriticalEffect;
 
 private://Speed
 	int			nATKSpeed;
 	float		fTime;
+	float		fRunTime;
+	bool		isMoveInit;
 	int			nGameSpeed;
 
 	void GameSpeedControl();
@@ -50,7 +57,11 @@ public:
 	void KeyInput();
 	bool IsBattle(bool _isBattle);
 	void PlayerMove();
+
 	void Dash();
+	void DashEffect();
+	void AttackEffect();
+	void CriticalEffect();
 
 	bool isAttack();
 };
