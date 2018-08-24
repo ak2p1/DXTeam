@@ -240,8 +240,11 @@ void CPlayer::DashEffect()
 	INFO info;
 	if (isDashEffect)
 	{
-		info.vPos.x = m_tInfo.vPos.x - 90;
-		info.vPos.y = m_tInfo.vPos.y + 110;
+		D3DXVECTOR3 vEnermyPos = Management->Get_ObjectType(OBJ_MONSTER)[0]->GetPos();
+		//info.vPos.x = m_tInfo.vPos.x - 90;
+		//info.vPos.y = m_tInfo.vPos.y + 110;
+		info.vPos.x = vEnermyPos.x - 160;
+		info.vPos.y = vEnermyPos.y + 130;
 		float fAngleZ = D3DXToRadian(-44.f);
 		D3DXMATRIX matEffectAngle , matEffectPos;
 		D3DXMatrixIdentity(&matEffectAngle);
