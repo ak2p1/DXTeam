@@ -50,7 +50,13 @@ int CManagement::Update(float _fTime /*= 0.0f*/)
 			((CMonster*)pMonster)->Attackted();
 		}
 	}
-
+	if (nPlayerState == CUnitObject::Critical)
+	{
+		if (CGameObject* pMonster = Management->Get_ObjectType(OBJ_MONSTER)[0])
+		{
+			((CMonster*)pMonster)->Critical();
+		}
+	}
 
 	if (m_bMonsterCreate)
 	{
