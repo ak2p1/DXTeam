@@ -52,6 +52,8 @@ void CPlayer::Init()
 
 	m_tInfo.vPos.x = 350.0f;
 	m_tInfo.vPos.y = 400.0f;
+	nDamage = 60;
+	A = 0;
 }
 
 int CPlayer::Update(float _fTime)
@@ -83,7 +85,7 @@ void CPlayer::Render()
 		if (nCritical < 10 + nCriticalPer) //치명타가 일때
 		{
 
-
+			nDamage = 60;
 			shader->Begin(NULL, NULL);
 			shader->BeginPass(passNum);
 			CriticalEffect();
@@ -93,21 +95,33 @@ void CPlayer::Render()
 			
 			shader->EndPass();
 			shader->End();
-			if (nTemp == 31 && isAttacked == false && isCriticalEffect == false)
+			if (nTemp == 1 && isAttacked == false && isCriticalEffect == false && nClickCount != 0)
 			{
+				cout << "C" << endl;
 				isAttacked = true;
 				SetPlayerState(2);
 				isCriticalEffect = true;
-
+				A = 1;
+			}
+			if (nTemp == 31 && isAttacked == false && isCriticalEffect == false)
+			{
+				cout << "D" << endl;
+				isAttacked = true;
+				SetPlayerState(2);
+				isCriticalEffect = true;
+				A = 1;
 			}
 			else
 			{ 
 				isAttacked = false;
 				SetPlayerState(0);
+				A = 0;
 			}
 		}
 		else //치명타가 아닐때
 		{
+			nDamage = 40;
+
 			nCritical = 1500;
 			shader->Begin(NULL, NULL);
 			shader->BeginPass(passNum);
@@ -116,25 +130,34 @@ void CPlayer::Render()
 			shader->End();
 			m_pDevice->SetTexture(0, pAttackImage->pTexInfo[nTemp].pTexture);
 			CGameObject::SetBuffer(pAttackImage->pTexInfo[0].fWidth, pAttackImage->pTexInfo[0].fHeight);
-			if (nTemp == 28 && isAttacked == false && isAttackEffect == false) 
+			if (nTemp == 1 && isAttacked == false && isAttackEffect == false && nClickCount != 0)
 			{
-				cout << "P" << endl;
+				cout << "A" << endl;
+				SetPlayerState(1);
+				isAttackEffect = true;
+				isAttacked = true;
+				A = 1;
+			}
+			if (nTemp == 28 && isAttacked == false && isAttackEffect == false)
+			{
+				cout << "Z" << endl;
 				isAttacked = true;
 				SetPlayerState(1); 
 				isAttackEffect = true; 
+				A = 1;
 			}
 			else 
 			{ 
-				//cout << "Non P" << endl;
 				isAttacked = false;
 				SetPlayerState(0); 
+				A = 0;
 			}
 
 		}
 
 		if (nClickCount > 0)
 		{
-			nTemp += 4;
+			nTemp += 1;
 		}
 
 		if (nTemp > 62)
@@ -206,10 +229,13 @@ bool CPlayer::IsBattle(bool _isBattle)
 {
 	if (!isDashEffect)
 	{
-		if (_isBattle) return isRun = false;
-		else isRun = true;
+		if (_isBattle) { isRun = false; }
+		else 
+		{ 
+			isRun = true;
+		}
 	}
-	return true;
+	return isRun;
 }
 
 void CPlayer::PlayerMove()
@@ -269,7 +295,13 @@ void CPlayer::DashEffect()
 		CGameObject::SetBuffer(pDashEffectImage->pTexInfo[i].fWidth * 2, pDashEffectImage->pTexInfo[i].fHeight);
 
 		if (i > 15)
+		{
 			isDashEffect = false;
+			nTemp = 0;
+			nClickCount--;
+			if (nClickCount < 0)
+				nClickCount = 0;
+		}
 	}
 }
 
@@ -349,6 +381,7 @@ void CPlayer::GameSpeedControl()
 			if (isDashEffect && isDash) nTemp = 0;
 			if (nClickCount > 0)
 			{
+				//nTemp+=2;
 				if (nTemp > 62)
 				{
 					EndImage();
@@ -369,6 +402,10 @@ void CPlayer::GameSpeedControl()
 	}
 }
 
+int CPlayer::TempReturn()
+{
+	return nTemp;
+}
 
 void CPlayer::SetPlayerState(int _case)
 {
@@ -394,4 +431,9 @@ void CPlayer::SetPlayerState(int _case)
 int CPlayer::GetPlayerState()
 {
 	return Player;
+}
+
+int CPlayer::GetPlayerDamage()
+{
+	return nDamage;
 }

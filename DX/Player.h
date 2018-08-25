@@ -13,6 +13,7 @@ private:
 	IMAGE*	pDashEffectImage;
 
 protected:
+	int			nDamage;
 	int			nCritical;
 	int			nCriticalPer;
 
@@ -35,7 +36,8 @@ protected://Speed
 
 protected://Click Count
 	int			nClickCount;
-
+	int			A;
+	int TempReturn();
 private://Shader
 	LPD3DXEFFECT	shader;
 	UINT			passNum;
@@ -69,5 +71,6 @@ public:
 public:
 	void SetPlayerState(int _case);
 	int GetPlayerState();
+	int GetPlayerDamage();
 };
 
