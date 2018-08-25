@@ -78,9 +78,9 @@ void CPlayer::Render()
 	m_pDevice->SetTransform(D3DTS_WORLD, &m_tInfo.matWorld);
 	GameSpeedControl();
 
-	if (!isRun && !isDashEffect)
+	if (!isRun && !isDashEffect) //달리는 중이 아닐때 
 	{
-		if (nCritical < 10 + nCriticalPer)
+		if (nCritical < 10 + nCriticalPer) //치명타가 일때
 		{
 
 
@@ -93,19 +93,20 @@ void CPlayer::Render()
 			
 			shader->EndPass();
 			shader->End();
-			if (nTemp == 31)
+			if (nTemp == 31 && isAttacked == false && isCriticalEffect == false)
 			{
 				isAttacked = true;
-				GetPlayerState(2);
+				SetPlayerState(2);
 				isCriticalEffect = true;
+
 			}
 			else
 			{ 
 				isAttacked = false;
-				GetPlayerState(0);
+				SetPlayerState(0);
 			}
 		}
-		else
+		else //치명타가 아닐때
 		{
 			nCritical = 1500;
 			shader->Begin(NULL, NULL);
@@ -115,8 +116,19 @@ void CPlayer::Render()
 			shader->End();
 			m_pDevice->SetTexture(0, pAttackImage->pTexInfo[nTemp].pTexture);
 			CGameObject::SetBuffer(pAttackImage->pTexInfo[0].fWidth, pAttackImage->pTexInfo[0].fHeight);
-			if (nTemp == 28) { isAttacked = true; GetPlayerState(1); isAttackEffect = true; }
-			else { isAttacked = false; GetPlayerState(0); }
+			if (nTemp == 28 && isAttacked == false && isAttackEffect == false) 
+			{
+				cout << "P" << endl;
+				isAttacked = true;
+				SetPlayerState(1); 
+				isAttackEffect = true; 
+			}
+			else 
+			{ 
+				//cout << "Non P" << endl;
+				isAttacked = false;
+				SetPlayerState(0); 
+			}
 
 		}
 
@@ -130,7 +142,7 @@ void CPlayer::Render()
 	}
 	else
 	{
-		GetPlayerState(3);
+		SetPlayerState(3);
 		if (nClickCount == 0)
 		{
 			m_pDevice->SetTexture(0, pRunImage->pTexInfo[nTemp].pTexture);
@@ -263,7 +275,7 @@ void CPlayer::DashEffect()
 
 void CPlayer::AttackEffect()
 {
-	int i = nTemp / 9 - 1;
+	int i = nTemp / 9 - 2;
 	INFO info;
 	D3DXMATRIX matEffectPos;
 	if (isAttackEffect)
@@ -319,9 +331,14 @@ bool CPlayer::isAttack()
 	return isAttacked;
 }
 
+void CPlayer::SetIsAttack(bool _isAttacked)
+{
+	isAttacked = _isAttacked;
+}
+
 void CPlayer::GameSpeedControl()
 {
-	if (fTime * nGameSpeed >= nATKSpeed)
+	if (fTime * nGameSpeed>= nATKSpeed)
 	{
 		if(nTemp == 0)
 			isDash = true;
@@ -350,4 +367,31 @@ void CPlayer::GameSpeedControl()
 		}
 		fTime = 0.0f;
 	}
+}
+
+
+void CPlayer::SetPlayerState(int _case)
+{
+	switch (_case)
+	{
+	case 0:
+		Player = Idle;
+		break;
+	case 1:
+		Player = Attack;
+		break;
+	case 2:
+		Player = Critical;
+		break;
+	case 3:
+		Player = Move;
+		break;
+	default:
+		break;
+	}
+}
+
+int CPlayer::GetPlayerState()
+{
+	return Player;
 }

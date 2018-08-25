@@ -12,7 +12,7 @@ private:
 	IMAGE*	pDashImage;
 	IMAGE*	pDashEffectImage;
 
-private:
+protected:
 	int			nCritical;
 	int			nCriticalPer;
 
@@ -24,7 +24,7 @@ private:
 	bool		isAttackEffect;
 	bool		isCriticalEffect;
 
-private://Speed
+protected://Speed
 	int			nATKSpeed;
 	float		fTime;
 	float		fRunTime;
@@ -33,7 +33,7 @@ private://Speed
 
 	void GameSpeedControl();
 
-private://Click Count
+protected://Click Count
 	int			nClickCount;
 
 private://Shader
@@ -64,5 +64,10 @@ public:
 	void CriticalEffect();
 
 	bool isAttack();
+	void SetIsAttack(bool _isAttacked);
+
+public:
+	void SetPlayerState(int _case);
+	int GetPlayerState();
 };
 
