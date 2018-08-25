@@ -4,6 +4,10 @@
 #include "Test.h"
 #include "Player.h"
 #include "Monster.h"
+#include "Monster1.h"
+#include "Monster2.h"
+#include "Monster3.h"
+#include "UnitObject.h"
 
 CManagement::CManagement()
 {
@@ -37,52 +41,72 @@ int CManagement::Update(float _fTime /*= 0.0f*/)
 		}
 	}
 
-	//if (m_bMonsterCreate)
-	//{
-	//	SAFE_DELETE(vecObjectUpdate[OBJ_MONSTER][0]);
-	//	vecObjectUpdate[OBJ_MONSTER][0] = vecObjectUpdate[OBJ_MONSTER][1];
-	//	vecRenderer[OBJ_MONSTER][0] = vecObjectUpdate[OBJ_MONSTER][1];
-	//	CGameObject* pMonster = NULL;
-	//	int nTemp = (rand() % 3); // 0, 1,2,3 
-	//	switch (nTemp)
-	//	{
-	//	case 0:
-	//	{
-	//		pMonster = new CMonster(Device->GetDevice());
-	//		((CMonster*)pMonster)->Init();
-	//		break;
-	//	}
-	//	case 1:
-	//	{
-	//		
-	//			pMonster = new CMonster(Device->GetDevice());
-	//			((CMonster*)pMonster)->Init();
-	//			break;
-	//		
-	//	}
-	//	case 2:
-	//	{
-	//		pMonster = new CMonster(Device->GetDevice());
-	//		((CMonster*)pMonster)->Init();
-	//		break;
-	//	}
-	//	case 3:
-	//	{
-	//		pMonster = new CMonster(Device->GetDevice());
-	//		((CMonster*)pMonster)->Init();
-	//		break;
-	//	}
-	//	default:
-	//		break;
-	//	}
-	//	
-	//	if (pMonster != NULL)
-	//	{
-	//		vecObjectUpdate[OBJ_MONSTER][1] = pMonster;
-	//		vecRenderer[OBJ_MONSTER][1] = pMonster;
-	//		return 0;
-	//	}
-	//}
+	CGameObject* pPlayer = Management->Get_ObjectType(OBJ_PLAYER)[0];
+	int nPlayerState = ((CPlayer*)pPlayer)->GetPlayerState();
+	if (nPlayerState == CUnitObject::Attack)
+	{
+		if (CGameObject* pMonster = Management->Get_ObjectType(OBJ_MONSTER)[0])
+		{
+			((CMonster*)pMonster)->Attackted();
+		}
+	}
+
+
+	if (m_bMonsterCreate)
+	{
+		
+		SAFE_DELETE(vecObjectUpdate[OBJ_MONSTER][0]);
+		vecObjectUpdate[OBJ_MONSTER][0] = vecObjectUpdate[OBJ_MONSTER][1];
+		vecRenderer[OBJ_MONSTER][0] = vecObjectUpdate[OBJ_MONSTER][1];
+		CGameObject* pMonster = NULL;
+		int nTemp = rand() % 3; // 0, 1,2,3 
+		switch (nTemp)
+		{
+		case 0:
+		{
+			pMonster = new CMonster(Device->GetDevice());
+			((CMonster*)pMonster)->Init(false);
+			m_bMonsterCreate = false;
+			break;
+		}
+		case 1:
+		{
+			
+				pMonster = new CMonster1(Device->GetDevice());
+				((CMonster1*)pMonster)->Init();
+				m_bMonsterCreate = false;
+				break;
+			
+		}
+		case 2:
+		{
+			pMonster = new CMonster2(Device->GetDevice());
+			((CMonster2*)pMonster)->Init();
+			m_bMonsterCreate = false;
+			break;
+		}
+		case 3:
+		{
+			pMonster = new CMonster3(Device->GetDevice());
+			((CMonster3*)pMonster)->Init();
+			m_bMonsterCreate = false;
+			break;
+		}
+
+		}
+		
+		if (pMonster != NULL)
+		{
+			vecObjectUpdate[OBJ_MONSTER][1] = pMonster;
+			vecRenderer[OBJ_MONSTER][1] = pMonster;
+			return 0;
+		}
+	}
+
+	
+
+
+
 	return 0;
 }
 
