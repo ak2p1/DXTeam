@@ -4,6 +4,8 @@
 #include "Tile.h"
 #include "Player.h"
 #include "Monster.h"
+#include "FontRenderer.h"
+#include "Monster1.h"
 
 CMainApp::CMainApp()
 	:m_pDevice(NULL)
@@ -47,23 +49,33 @@ void CMainApp::Init()
 	//매니지먼트 초기화
 	Management->Init(m_pDevice);
 
-	TextureMgr->Add_Texture(L"PlayerDashEffect", L"Textrue/Effect/Dash/", TEX_MULTI, 27, D3DCOLOR_ARGB(255, 255, 255, 255));
-
 	TextureMgr->Add_Texture(L"PlayerAttack", L"Textrue/PlayerMotion/Attack1/", TEX_MULTI, 65);
-	TextureMgr->Add_Texture(L"PlayerCritical", L"Textrue/PlayerMotion/Attack3/", TEX_MULTI, 64 );
-	TextureMgr->Add_Texture(L"PlayerRun", L"Textrue/PlayerMotion/Run/", TEX_MULTI, 37 );
+	TextureMgr->Add_Texture(L"PlayerCritical", L"Textrue/PlayerMotion/Attack3/", TEX_MULTI, 64);
+	TextureMgr->Add_Texture(L"PlayerRun", L"Textrue/PlayerMotion/Run/", TEX_MULTI, 37);
 	TextureMgr->Add_Texture(L"Monster1", L"Textrue/image/Enemy/Monster3/IDLE/", TEX_MULTI, 28, 0);
-	TextureMgr->Add_Texture(L"PlayerAttack", L"Textrue/PlayerMotion/Attack1/", TEX_MULTI, 65 );
+	TextureMgr->Add_Texture(L"Monster1Die", L"Textrue/image/Enemy/Monster3/DIE/", TEX_MULTI, 35, 0);
+	TextureMgr->Add_Texture(L"Monster2", L"Textrue/image/Enemy/Monster4/IDLE/", TEX_MULTI, 18, 0);
+	TextureMgr->Add_Texture(L"Monster3", L"Textrue/image/Enemy/Monster5/IDLE/", TEX_MULTI, 32, 0);
+	TextureMgr->Add_Texture(L"Monster4", L"Textrue/image/Enemy/Monster6/IDLE/", TEX_MULTI, 8, 0);
+	TextureMgr->Add_Texture(L"PlayerDash", L"Textrue/PlayerMotion/Attack2/", TEX_MULTI, 64, D3DCOLOR_ARGB(255, 255, 255, 255));
+	TextureMgr->Add_Texture(L"PlayerDashEffect", L"Textrue/Effect/Dash/", TEX_MULTI, 27, D3DCOLOR_ARGB(255, 255, 255, 255));
+	TextureMgr->Add_Texture(L"PlayerAttackEffect", L"Textrue/Effect/Attack/", TEX_MULTI, 10, D3DCOLOR_ARGB(255, 255, 255, 255));
+	TextureMgr->Add_Texture(L"PlayerCriticalEffect", L"Textrue/Effect/Critical/", TEX_MULTI, 7, D3DCOLOR_ARGB(255, 255, 255, 255));
+	TextureMgr->Add_Texture(L"PlayerAttack", L"Textrue/PlayerMotion/Attack1/", TEX_MULTI, 65);
 	TextureMgr->Add_Texture(L"PlayerCritical", L"Textrue/PlayerMotion/Attack3/", TEX_MULTI, 64);
 	TextureMgr->Add_Texture(L"PlayerRun", L"Textrue/PlayerMotion/Run/", TEX_MULTI, 37);
 
 	TextureMgr->Add_Texture(L"Tile", L"Textrue/Tile/TestTile.png", TEX_SINGLE);
 	TextureMgr->Add_Texture(L"Sky", L"Textrue/Sky.jpg", TEX_SINGLE);
+	TextureMgr->Add_Texture(L"Font", L"Textrue/Font/", TEX_MULTI, 11);
 
+	CGameObject* pFontRenderer = new CFontRenderer(Device->GetDevice());
+	((CFontRenderer*)pFontRenderer)->Init();
+	Management->Add_Object(pFontRenderer, OBJ_UI);
 
-	CGameObject* pTest = new CTile(Device->GetDevice());
-	((CTile*)pTest)->Init();
-	Management->Add_Object(pTest, OBJ_BACKGROUND);
+	CGameObject* pTile = new CTile(Device->GetDevice());
+	((CTile*)pTile)->Init();
+	Management->Add_Object(pTile, OBJ_BACKGROUND);
 
 	CGameObject* m_pPlayer;
 	m_pPlayer = new CPlayer(Device->GetDevice());
@@ -71,14 +83,12 @@ void CMainApp::Init()
 	Management->Add_Object(m_pPlayer, OBJ_PLAYER);
 
 	CGameObject* pMonster1 = new CMonster(Device->GetDevice());
-	((CMonster*)pMonster1)->Init();
+	((CMonster*)pMonster1)->Init(true);
 	Management->Add_Object(pMonster1, OBJ_MONSTER);
 
-	// 	pTest = new CTest(Device->GetDevice());
-	// 	((CTest*)pTest)->Init();
-	// 	Management->Add_Object(pTest, OBJ_PLAYER);
-
-
+	CGameObject* pMonster2 = new CMonster1(Device->GetDevice());
+	((CMonster1*)pMonster2)->Init();
+	Management->Add_Object(pMonster2, OBJ_MONSTER);
 }
 
 int CMainApp::Update()

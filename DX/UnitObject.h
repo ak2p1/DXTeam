@@ -3,7 +3,7 @@
 class CUnitObject :
 	public CGameObject
 {
-protected:
+public:
 	enum eCharacterState
 	{
 		Idle = 0,

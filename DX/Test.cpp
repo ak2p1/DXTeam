@@ -19,8 +19,6 @@ void CTest::Init()
 	CGameObject::init(true, pImage->pTexInfo[0].fWidth , pImage->pTexInfo[0].fHeight);
 	m_tInfo.vScale.x = m_tInfo.vScale.y = m_tInfo.vScale.z = 1.f;
 	m_tInfo.vPos = {WIN_SIZE_X * 0.5f ,WIN_SIZE_Y * 0.5f , 0.f };
-
-
 }
 
 int CTest::Update(float _fTime /*= 0.0f*/)
@@ -54,7 +52,6 @@ void CTest::Render()
 		{
 			nTemp = 0;
 		}
-
 	}
 	//m_pDevice->SetTransform(D3DTS_WORLD, &m_tInfo.matWorld);
 	//m_pDevice->SetTexture(0, pImage->pTexInfo[nTemp].pTexture);

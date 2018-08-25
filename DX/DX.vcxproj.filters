@@ -67,6 +67,9 @@
     <Filter Include="01.Object\02.Tile">
       <UniqueIdentifier>{ed204be7-76b2-40e0-85e3-ebe69e0b8336}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Object\03.Font">
+      <UniqueIdentifier>{66d0a772-d3e9-47db-8831-604c615b4299}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -154,6 +157,18 @@
     <ClInclude Include="Tile.h">
       <Filter>01.Object\02.Tile</Filter>
     </ClInclude>
+    <ClInclude Include="FontRenderer.h">
+      <Filter>01.Object\03.Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster1.h">
+      <Filter>01.Object\01.Monter\01.MonsterObj</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster2.h">
+      <Filter>01.Object\01.Monter\01.MonsterObj</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster3.h">
+      <Filter>01.Object\01.Monter\01.MonsterObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -208,6 +223,18 @@
     <ClCompile Include="Tile.cpp">
       <Filter>01.Object\02.Tile</Filter>
     </ClCompile>
+    <ClCompile Include="FontRenderer.cpp">
+      <Filter>01.Object\03.Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster1.cpp">
+      <Filter>01.Object\01.Monter\01.MonsterObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster2.cpp">
+      <Filter>01.Object\01.Monter\01.MonsterObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster3.cpp">
+      <Filter>01.Object\01.Monter\01.MonsterObj</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="DX.ico">
@@ -228,6 +255,9 @@
     </FxCompile>
     <FxCompile Include="AlphaShaderMonster.hlsl">
       <Filter>01.Object\01.Monter</Filter>
+    </FxCompile>
+    <FxCompile Include="UIFontShader.hlsl">
+      <Filter>01.Object\03.Font</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

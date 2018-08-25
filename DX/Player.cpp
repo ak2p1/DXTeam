@@ -8,9 +8,6 @@ void CPlayer::CreateShader(wstring fileName, LPD3DXEFFECT * shader)
 	HRESULT result = D3DXCreateEffectFromFile(Device->GetDevice(),
 		fileName.c_str(), NULL, NULL,
 		D3DXSHADER_DEBUG, NULL, shader, NULL);
-	//D3DXCreateEffectFromFile(Device->GetDevice(),\
-		L"ColorShader.hlsl", NULL, NULL,\
-		D3DXSHADER_DEBUG, NULL, shader, NULL);
 }
 
 CPlayer::CPlayer(LPDIRECT3DDEVICE9 pDevice)
@@ -39,6 +36,8 @@ void CPlayer::Init()
 
 	CreateShader(L"AlphaShader.hlsl", &shader);
 	passNum = 4;
+
+
 
 	pAttackImage = TextureMgr->GetImage(L"PlayerAttack");
 	pAttackEffectImage = TextureMgr->GetImage(L"PlayerAttackEffect");
@@ -213,7 +212,7 @@ void CPlayer::EndImage()
 void CPlayer::KeyInput()
 {
 	if (InputMgr->KeyDown(VK_UP)) nGameSpeed+=2;
-	if (InputMgr->KeyDown(VK_DOWN)) nGameSpeed-+2;
+	if (InputMgr->KeyDown(VK_DOWN)) nGameSpeed -=2;
 
 	if (InputMgr->KeyDown(VK_UP)) nGameSpeed+=5;
 	if (InputMgr->KeyDown(VK_DOWN)) nGameSpeed--;
@@ -351,7 +350,7 @@ void CPlayer::CriticalEffect()
 		info.matWorld = matEffectPos;
 		m_pDevice->SetTransform(D3DTS_WORLD, &info.matWorld);
 		m_pDevice->SetTexture(0, pCriticalEffectImage->pTexInfo[i].pTexture);
-		CGameObject::SetBuffer(pCriticalEffectImage->pTexInfo[i].fWidth * 2, pCriticalEffectImage->pTexInfo[i].fHeight * 1.5);
+		CGameObject::SetBuffer(pCriticalEffectImage->pTexInfo[i].fWidth * 2.0f, pCriticalEffectImage->pTexInfo[i].fHeight * 1.5f);
 	}
 	D3DXMatrixTranslation(&matEffectPos, m_tInfo.vPos.x, m_tInfo.vPos.y, 0.0f);
 	m_tInfo.matWorld = matEffectPos;
