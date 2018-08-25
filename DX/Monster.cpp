@@ -39,7 +39,7 @@ void CMonster::Init(bool isFirst)
 	
 	CGameObject* pPlayer = Management->Get_ObjectType(OBJ_PLAYER)[0];
 	m_tInfo.nMonNum= 1;
-	m_nHP = 100;
+	m_nHP = 180;
 
 
 	D3DXVECTOR3 vPlayerPos = Management->Get_ObjectType(OBJ_PLAYER)[0]->GetPos();
@@ -75,6 +75,7 @@ int CMonster::Update(float _fTime)
 
 	
 
+	cout << m_nHP << endl;
 
 
 	CGameObject::Update();
@@ -136,7 +137,13 @@ void CMonster::Render()
 int CMonster::Attackted()
 {
 	
-	m_nHP -= 40;
+	m_nHP -= 20;
+	return 0;
+}
+
+int CMonster::Critical()
+{
+	m_nHP -= 30;
 	return 0;
 }
 

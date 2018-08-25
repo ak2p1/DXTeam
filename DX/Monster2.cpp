@@ -29,7 +29,7 @@ void CMonster2::Init()
 	CGameObject* pPlayer = Management->Get_ObjectType(OBJ_PLAYER)[0];
 	((CPlayer*)pPlayer)->isAttack();
 	m_tInfo.nMonNum = 1;
-	m_nHP = 100;
+	m_nHP = 120;
 
 	D3DXVECTOR3 vMonsterPos = Management->Get_ObjectType(OBJ_MONSTER)[0]->GetPos();
 
@@ -86,6 +86,13 @@ void CMonster2::Render()
 
 int CMonster2::Attackted()
 {
-	m_nHP -= 40;
+	m_nHP -= 20;
+	return 0;
+}
+
+int CMonster2::Critical()
+{
+	m_nHP -= 30;
+
 	return 0;
 }

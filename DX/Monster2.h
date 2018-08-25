@@ -29,6 +29,8 @@ public:
 
 public:
 	int Attackted();
+	int Critical();
+
 
 };
 

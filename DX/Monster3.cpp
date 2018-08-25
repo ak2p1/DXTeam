@@ -23,13 +23,13 @@ CMonster3::~CMonster3()
 
 void CMonster3::Init()
 {
-	pImage = TextureMgr->GetImage(L"Monster3");
+	pImage = TextureMgr->GetImage(L"Monster4");
 	CGameObject::init(true, pImage->pTexInfo[0].fWidth, pImage->pTexInfo[0].fHeight);
 
 	CGameObject* pPlayer = Management->Get_ObjectType(OBJ_PLAYER)[0];
 	((CPlayer*)pPlayer)->isAttack();
 	m_tInfo.nMonNum = 1;
-	m_nHP = 100;
+	m_nHP = 140;
 
 	D3DXVECTOR3 vMonsterPos = Management->Get_ObjectType(OBJ_MONSTER)[0]->GetPos();
 
@@ -84,6 +84,13 @@ void CMonster3::Render()
 
 int CMonster3::Attackted()
 {
-	m_nHP -= 40;
+	m_nHP -= 20;
+	return 0;
+}
+
+int CMonster3::Critical()
+{
+	m_nHP -= 30;
+
 	return 0;
 }

@@ -92,7 +92,14 @@ void CMonster1::Render()
 int CMonster1::Attackted()
 {
 	
-		m_nHP -= 40;
+		m_nHP -= 20;
+
+	return 0;
+}
+
+int CMonster1::Critical()
+{
+	m_nHP -= 30;
 
 	return 0;
 }
