@@ -27,6 +27,7 @@ void CPlayer::Init()
 	nATKSpeed = 1;
 	nGameSpeed = 10;
 	nCriticalPer = 0;
+	nMana = 100;
 	isRun = true;
 	isInit = false;
 	isAttacked = false;
@@ -174,7 +175,7 @@ void CPlayer::Render()
 		if(nTemp > 35)
 			EndImage();
 	}
-
+	cout << nMana << endl;
 }
 
 void CPlayer::Release()
@@ -198,6 +199,7 @@ void CPlayer::Release()
 	nClickCount = NULL;
 	pDashEffectImage = NULL;
 	isMoveInit = NULL;
+	nMana = NULL;
 }
 
 void CPlayer::EndImage()
@@ -221,7 +223,7 @@ void CPlayer::KeyInput()
 	if (InputMgr->KeyDown(VK_DOWN)) nGameSpeed-=3;
 
 	if (InputMgr->KeyDown('Q')) nCriticalPer += 5;
-	if (InputMgr->KeyDown(VK_SPACE)) nClickCount++;
+	if (InputMgr->KeyDown(VK_SPACE) && nMana > 2) { nClickCount++; nMana -= 3; }
 }
 
 bool CPlayer::IsBattle(bool _isBattle)
@@ -380,6 +382,8 @@ void CPlayer::GameSpeedControl()
 			if (isDashEffect && isDash) nTemp = 0;
 			if (nClickCount > 0)
 			{
+				if (nMana < 0)
+					nMana = 0;
 				//nTemp+=2;
 				if (nTemp > 62)
 				{
@@ -399,11 +403,20 @@ void CPlayer::GameSpeedControl()
 		}
 		fTime = 0.0f;
 	}
+	if (nTemp % 100 == 9)
+		nMana++;
+	if (nMana > 100)
+		nMana = 100;
 }
 
 int CPlayer::TempReturn()
 {
 	return nTemp;
+}
+
+int CPlayer::CountReturn()
+{
+	return nClickCount;
 }
 
 void CPlayer::SetPlayerState(int _case)

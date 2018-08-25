@@ -36,8 +36,11 @@ protected://Speed
 
 protected://Click Count
 	int			nClickCount;
+protected://Mana
 	int			A;
-	int TempReturn();
+	int			nMana;
+	int			TempReturn();
+	int			CountReturn();
 private://Shader
 	LPD3DXEFFECT	shader;
 	UINT			passNum;
